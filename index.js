@@ -1,16 +1,28 @@
 /* eslint-disable no-console */
 
-// const primeGenerator = require('./lib/prime-generator');
+const primeGeneratorBrutal = require('./lib/prime-generator-brutal');
 
-function main() {
-    // TODO: run the prime generator
-
+function main(targetNumber) {
     console.log('Running prime generator...');
+
+    // TODO: add a better algorithm
+
+    const primeNumbers = primeGeneratorBrutal.getPrimeNumbers(targetNumber);
+
+    console.log(primeNumbers);
+
+    // TODO: print the numbers in a nice way
+
+    console.log('Finished');
 }
 
 // Run script standalone
 if (require.main === module) {
-    main();
+    const argv = require('./lib/argv');
+
+    // TODO: introduce input validation
+
+    main(argv.n || argv.number);
 }
 
 module.exports = main;

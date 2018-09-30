@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
@@ -35,9 +33,10 @@ gulp.task('default', () => {
     console.log('  npm test\t\tRun ESLint and Mocha unit tests together.');
     console.log(`  gulp ${RUN_TASK} NUMBER\tRun Prime Number Generator.`);
     console.log();
-    console.log('Optional parameters (Mocha unit tests):');
-    console.log('  --specs\t\tOverride the "*.js" test files to run.');
-    console.log(`  --timeout\t\tOverride the default (${defaults.timeouts.oneMinute}ms) timeout.`);
+    console.log('Parameters:');
+    console.log('  --specs\t\tOverride the "*.js" test files to run in Mocha.');
+    console.log(`  --timeout\t\tOverride the default (${defaults.timeouts.oneMinute}ms) timeout in Mocha.`);
+    console.log(`  --number\t\tSpecify the target number to calculate and print the prime numbers. Required for the "${RUN_TASK}" command.`);
     console.log();
 });
 
@@ -65,7 +64,11 @@ gulp.task(UNIT_TESTS_TASK, [ISTANBUL_PRE_TASK], () => gulp
     .pipe(istanbul.writeReports({ dir: defaults.paths.coverage })))
     .once('error', handleError);
 
-gulp.task(RUN_TASK, () => index());
+gulp.task(RUN_TASK, () => {
+    // TODO: introduce input validation
+
+    index(argv.n || argv.number);
+});
 
 function handleError(err) {
     console.error('Gulp task failed:');

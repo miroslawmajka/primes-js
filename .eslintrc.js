@@ -48,7 +48,7 @@ module.exports = {
         'no-var': 'error',
         'newline-before-return': 'error',
         'prefer-arrow-callback': 'warn',
-        'no-console': 'warn',
+        'no-console': 'off',
         'space-before-function-paren': [ 'error', 'never' ],
         'object-curly-spacing': [ 'error', 'always' ],
         'space-in-parens': ['error', 'never'],

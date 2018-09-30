@@ -22,7 +22,7 @@ gulp
 
 To run the application you can use one of the following commands:
 ```
-gulp run NUMBER
-node index.js NUMBER
+gulp run -n NUMBER
+node index.js -n NUMBER
 ```
 Where **NUMBER** is the n-th prime number (whole number).
