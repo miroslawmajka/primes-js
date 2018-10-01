@@ -28,7 +28,9 @@ gulp
 To run the application you can use one of the following commands:
 ```
 gulp run -n NUMBER
+gulp run --number NUMBER
 node index.js -n NUMBER
+node index.js --number NUMBER
 ```
 Where **NUMBER** is the n-th prime number (whole number).
 
@@ -42,10 +44,13 @@ This will cause the script to print debugging information about the prime genera
 
 # What's Good
 
-To generate 1,000,000 primes the algorithm took 26.609 seconds.
+* Travis CI integration which monitors the integrity of the code.
+* To generate 1,000,000 primes the algorithm took 26.609 seconds.
+* Gulp, Mocha, Istanbul, ESLint all doing their parts.
 
 ---
 
-# What's Bad
+# What could be Better
 
-TODO
+A better algorithm can be implemented using the [Wikibook](https://en.m.wikibooks.org/wiki/Some_Basic_and_Inefficient_Prime_Number_Generating_Algorithms)
+along with some basic metrics added when running unit tests for very large numbers (e.g. > 1,000,000).

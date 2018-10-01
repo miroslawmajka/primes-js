@@ -27,17 +27,19 @@ gulp.task('default', () => {
     console.log();
     console.log(`${packageJson.description} ${packageJson.version}`);
     console.log();
-    console.log('Commands:');
+    console.log('Development commands:');
     console.log(`  gulp ${LINT_TASK}\t\tRun ESLint against all JavaScript files.`);
     console.log(`  gulp ${UNIT_TESTS_TASK}\t\tRun Mocha unit tests and see code coverage.`);
     console.log('  npm test\t\tRun ESLint and Mocha unit tests together.');
-    console.log(`  gulp ${RUN_TASK} NUMBER\tRun Prime Number Generator.`);
     console.log();
     console.log('Parameters:');
     console.log('  --specs\t\tOverride the "*.js" test files to run in Mocha.');
     console.log(`  --timeout\t\tOverride the default (${defaults.timeouts.oneMinute}ms) timeout in Mocha.`);
-    console.log(`  --number\t\tSpecify the target number to calculate and print the prime numbers. Required for the "${RUN_TASK}" command.`);
     console.log();
+    console.log('Running the algorithm:');
+    console.log(`  gulp ${RUN_TASK} -n NUMBER`);
+    console.log('    OR');
+    console.log(`  gulp ${RUN_TASK} --number NUMBER`);
 });
 
 gulp.task(LINT_TASK, () => gulp
