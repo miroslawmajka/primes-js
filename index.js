@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 const primeGeneratorBrutal = require('./lib/prime-generator-brutal');
 
 function main(targetNumber) {
