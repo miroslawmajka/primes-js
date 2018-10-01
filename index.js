@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const moment = require('moment');
 
 const primeGenerator = require('./lib/prime-generator');
@@ -9,8 +11,6 @@ function main(opts) {
     const targetNumber = opts.targetNumber;
     const pg = opts.pg;
     const gf = opts.gf;
-
-    // TODO: introduce input validation
 
     console.log('Running prime generator...');
 

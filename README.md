@@ -32,11 +32,17 @@ node index.js -n NUMBER
 ```
 Where **NUMBER** is the n-th prime number (whole number).
 
+You can add a **.env** file with the following contents to the root of this project:
+```
+DEBUG=true
+```
+This will cause the script to print debugging information about the prime generation.
+
 ---
 
 # What's Good
 
-TODO
+To generate 1,000,000 primes the algorithm took 26.609 seconds.
 
 ---
 
