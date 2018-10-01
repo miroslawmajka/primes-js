@@ -21,19 +21,44 @@ describe('When I run the prime generator', function() {
         primeNumbers[4].should.equal(11);
     });
 
-    it('I get an exception for empty input', function() {
-        should.throw(() => subject.getPrimeNumbers(), 'Undefined target number passed');
-    });
+    const exceptionScenarios = [
+        {
+            input: undefined,
+            exception: 'Undefined target number passed'
+        },
+        {
+            input: null,
+            exception: 'Undefined target number passed'
+        },
+        {
+            input: 0,
+            exception: 'Undefined target number passed'
+        },
+        {
+            input: '',
+            exception: 'Undefined target number passed'
+        },
+        {
+            input: 'w',
+            exception: 'The passed "w" value is not a number'
+        },
+        {
+            input: '1w',
+            exception: 'The passed "1w" value is not a number'
+        },
+        {
+            input: 3.14,
+            exception: 'Number must be an integer'
+        },
+        {
+            input: -1,
+            exception: 'Number must be 1 or above'
+        }
+    ];
 
-    it('I get an exception for not a number', function() {
-        should.throw(() => subject.getPrimeNumbers('w'), 'The passed "w" value is not a number');
-    });
-
-    it('I get an exception for not an integer', function() {
-        should.throw(() => subject.getPrimeNumbers(3.14), 'Number must be an integer');
-    });
-
-    it('I get an exception for number below 1', function() {
-        should.throw(() => subject.getPrimeNumbers(-1), 'Number must be 1 or above');
+    exceptionScenarios.forEach(es => {
+        it(`I get an exception for "${es.input}" input`, function() {
+            should.throw(() => subject.getPrimeNumbers(es.input), es.exception);
+        });
     });
 });
