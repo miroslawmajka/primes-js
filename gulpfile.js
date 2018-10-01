@@ -64,11 +64,7 @@ gulp.task(UNIT_TESTS_TASK, [ISTANBUL_PRE_TASK], () => gulp
     .pipe(istanbul.writeReports({ dir: defaults.paths.coverage })))
     .once('error', handleError);
 
-gulp.task(RUN_TASK, () => {
-    // TODO: introduce input validation
-
-    index(argv.n || argv.number);
-});
+gulp.task(RUN_TASK, () => index(argv.n || argv.number));
 
 function handleError(err) {
     console.error('Gulp task failed:');

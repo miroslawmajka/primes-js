@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/miroslawmajka/primes-js#readme",
   "dependencies": {
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "moment": "^2.22.2"
   }
 }

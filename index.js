@@ -1,15 +1,32 @@
-const primeGeneratorBrutal = require('./lib/prime-generator-brutal');
+const moment = require('moment');
 
-function main(targetNumber) {
+const primeGenerator = require('./lib/prime-generator');
+const gridFormatter = require('./lib/grid-formatter');
+
+const TIME_DISPLAY_FORMAT = 'HH:mm:ss.SSS';
+
+function main(opts) {
+    const targetNumber = opts.targetNumber;
+    const pg = opts.pg;
+    const gf = opts.gf;
+
+    // TODO: introduce input validation
+
     console.log('Running prime generator...');
 
-    // TODO: add a better algorithm
+    const startTime = moment();
 
-    const primeNumbers = primeGeneratorBrutal.getPrimeNumbers(targetNumber);
+    const primeNumbers = pg.getPrimeNumbers(targetNumber);
 
-    console.log(primeNumbers);
+    const endTime = moment();
 
-    // TODO: print the numbers in a nice way
+    const gridString = gf.getGridString(primeNumbers);
+
+    console.log(gridString);
+
+    console.log(`Start time: ${startTime.format(TIME_DISPLAY_FORMAT)}`);
+    console.log(`End time: ${endTime.format(TIME_DISPLAY_FORMAT)}`);
+    console.log(`Time taken: ${moment.duration(endTime.diff(startTime)).asSeconds()} seconds`);
 
     console.log('Finished');
 }
@@ -18,9 +35,13 @@ function main(targetNumber) {
 if (require.main === module) {
     const argv = require('./lib/argv');
 
-    // TODO: introduce input validation
-
-    main(argv.n || argv.number);
+    main({
+        targetNumber: argv.n || argv.number,
+        pg: primeGenerator,
+        gf: gridFormatter
+    });
 }
 
-module.exports = main;
+module.exports = (targetNumber, pg = primeGenerator, gf = gridFormatter) => {
+    main({ targetNumber, pg, gf });
+};

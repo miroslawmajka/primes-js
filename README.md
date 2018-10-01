@@ -1,8 +1,11 @@
 # primes-js
-Prime Number Generator
+Prime Number Generator by Miroslaw Majka
 
 Travis CI Build Status: [![BuildStatus](https://travis-ci.org/miroslawmajka/primes-js.svg?branch=master)](https://travis-ci.org/miroslawmajka/primes-js)
 
+---
+
+# Instructions
 To run the application please do the following in your favourite CMD:
 ```
 git clone https://github.com/miroslawmajka/primes-js.git
@@ -28,3 +31,15 @@ gulp run -n NUMBER
 node index.js -n NUMBER
 ```
 Where **NUMBER** is the n-th prime number (whole number).
+
+---
+
+# What's Good
+
+TODO
+
+---
+
+# What's Bad
+
+TODO
