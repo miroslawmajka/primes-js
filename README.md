@@ -1,7 +1,7 @@
 # primes-js
 Prime Number Generator
 
-Travic CI Build Status: [![BuildStatus](https://travis-ci.org/miroslawmajka/primes-js.svg?branch=master)](https://travis-ci.org/miroslawmajka/primes-js)
+Travis CI Build Status: [![BuildStatus](https://travis-ci.org/miroslawmajka/primes-js.svg?branch=master)](https://travis-ci.org/miroslawmajka/primes-js)
 
 To run the application please do the following in your favourite CMD:
 ```
