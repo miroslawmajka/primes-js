@@ -18,17 +18,19 @@ function main(opts) {
 
     const primeNumbers = pg.getPrimeNumbers(targetNumber);
 
+    console.log('Finished generating numbers');
+
     const endTime = moment();
 
-    const gridString = gf.getGridString(primeNumbers);
+    // Better to print the numbers rather then build a string due to memory constraints
+    gf.printGridWith(primeNumbers);
 
-    console.log(gridString);
+    console.log(`Generation start time: ${startTime.format(TIME_DISPLAY_FORMAT)}`);
+    console.log(`Generation end time: ${endTime.format(TIME_DISPLAY_FORMAT)}`);
 
-    console.log(`Start time: ${startTime.format(TIME_DISPLAY_FORMAT)}`);
-    console.log(`End time: ${endTime.format(TIME_DISPLAY_FORMAT)}`);
-    console.log(`Time taken: ${moment.duration(endTime.diff(startTime)).asSeconds()} seconds`);
+    const durationSeconds = moment.duration(endTime.diff(startTime)).asSeconds();
 
-    console.log('Finished');
+    console.log(`Prime number generation time: ${durationSeconds} seconds`);
 }
 
 // Run script standalone

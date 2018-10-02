@@ -46,11 +46,13 @@ This will cause the script to print debugging information about the prime genera
 
 * Travis CI integration which monitors the integrity of the code.
 * To generate 1,000,000 primes the algorithm took 26.609 seconds.
-* Gulp, Mocha, Istanbul, ESLint all doing their parts.
+* Gulp, Mocha, Istanbul, Sinon, Chai, ESLint all doing their parts.
 
 ---
 
 # What could be Better
 
-A better algorithm can be implemented using the [Wikibook](https://en.m.wikibooks.org/wiki/Some_Basic_and_Inefficient_Prime_Number_Generating_Algorithms)
+* A better algorithm can be implemented using the [Wikibook](https://en.m.wikibooks.org/wiki/Some_Basic_and_Inefficient_Prime_Number_Generating_Algorithms)
 along with some basic metrics added when running unit tests for very large numbers (e.g. > 1,000,000).
+* A web interface could be implemented with an Express package that would show the result in HTML format.
+* A tidy up of the logger to have a consistent logger/print module
