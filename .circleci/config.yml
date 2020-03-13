@@ -1,0 +1,51 @@
+version: 2.1
+
+jobs:
+  restore:
+    docker:
+      - image: circleci/node:stretch
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+  lint:
+    docker:
+      - image: circleci/node:stretch
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Lint JavaScript files
+          command: npm run lint
+  mocha_tests:
+    docker:
+      - image: circleci/node:stretch
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Run Mocha tests
+          command: npm test
+      - store_test_results:
+          path: test-results
+
+workflows:
+  version: 2
+  restore_lint_mocha_tests:
+    jobs:
+      - restore
+      - lint:
+          requires:
+            - restore
+      - mocha_tests:
+          requires:
+            - restore

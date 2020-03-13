@@ -2,28 +2,28 @@ require('dotenv').config();
 
 const moment = require('moment');
 
-const primeGenerator = require('./lib/prime-generator');
-const gridFormatter = require('./lib/grid-formatter');
+const defaultPrimeGenerator = require('./lib/prime-generator');
+const defaultGridFormatter = require('./lib/grid-formatter');
 
 const TIME_DISPLAY_FORMAT = 'HH:mm:ss.SSS';
 
 function main(opts) {
     const targetNumber = opts.targetNumber;
-    const pg = opts.pg;
-    const gf = opts.gf;
+    const primeGenerator = opts.primeGenerator;
+    const gridFormatter = opts.gridFormatter;
 
     console.log('Running prime generator...');
 
     const startTime = moment();
 
-    const primeNumbers = pg.getPrimeNumbers(targetNumber);
+    const primeNumbers = primeGenerator.getPrimeNumbers(targetNumber);
 
     console.log('Finished generating numbers');
 
     const endTime = moment();
 
     // Better to print the numbers rather then build a string due to memory constraints
-    gf.printGridWith(primeNumbers);
+    gridFormatter.printGridWith(primeNumbers);
 
     console.log(`Generation start time: ${startTime.format(TIME_DISPLAY_FORMAT)}`);
     console.log(`Generation end time: ${endTime.format(TIME_DISPLAY_FORMAT)}`);
@@ -39,11 +39,11 @@ if (require.main === module) {
 
     main({
         targetNumber: argv.n || argv.number,
-        pg: primeGenerator,
-        gf: gridFormatter
+        primeGenerator: defaultPrimeGenerator,
+        gridFormatter: defaultGridFormatter
     });
 }
 
-module.exports = (targetNumber, pg = primeGenerator, gf = gridFormatter) => {
-    main({ targetNumber, pg, gf });
+module.exports = (targetNumber, primeGenerator = primeGenerator, gridFormatter = gridFormatter) => {
+    main({ targetNumber, primeGenerator, gridFormatter });
 };
