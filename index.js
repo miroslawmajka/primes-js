@@ -8,7 +8,18 @@ const defaultGridFormatter = require('./lib/grid-formatter');
 const TIME_DISPLAY_FORMAT = 'HH:mm:ss.SSS';
 
 function main(opts) {
+    console.log(`\nPrime Number Generator (version ${require('./package.json').version})\n`);
+
     const targetNumber = opts.targetNumber;
+
+    if (!targetNumber) {
+        console.log('Usage:');
+        console.log('\tnode index.js -n TARGET');
+        console.log('\tnode index.js --number TARGET\n');
+
+        process.exit(0);
+    }
+
     const primeGenerator = opts.primeGenerator;
     const gridFormatter = opts.gridFormatter;
 
@@ -18,7 +29,7 @@ function main(opts) {
 
     const primeNumbers = primeGenerator.getPrimeNumbers(targetNumber);
 
-    console.log('Finished generating numbers');
+    console.log(`Finished generating ${targetNumber} numbers`);
 
     const endTime = moment();
 
@@ -44,6 +55,10 @@ if (require.main === module) {
     });
 }
 
-module.exports = (targetNumber, primeGenerator = primeGenerator, gridFormatter = gridFormatter) => {
-    main({ targetNumber, primeGenerator, gridFormatter });
+module.exports = (targetNumber, primeGenerator = defaultPrimeGenerator, gridFormatter = defaultGridFormatter) => {
+    main({ 
+        targetNumber, 
+        primeGenerator, 
+        gridFormatter 
+    });
 };
