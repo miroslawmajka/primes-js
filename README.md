@@ -1,7 +1,7 @@
 # Primes.js
 Prime Number Generator by Miroslaw Majka
 
-Circle CI Build Status: TODO
+Circle CI Build Status: [![CircleCI](https://circleci.com/gh/miroslawmajka/primes-js.svg?style=svg)](https://circleci.com/gh/miroslawmajka/primes-js)
 
 ---
 
