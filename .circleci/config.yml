@@ -9,7 +9,7 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: Install Dependencies
+          name: Install dependencies
           command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
@@ -34,9 +34,11 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: Run Mocha tests
-          command: npm test
+          command: npm run nyc-test-xunit
       - store_test_results:
           path: test-results
+      - store_artifacts:
+          path: coverage
 
 workflows:
   version: 2
