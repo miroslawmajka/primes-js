@@ -19,12 +19,12 @@
     "sinon-chai": "^3.5.0"
   },
   "scripts": {
-    "lint": "eslint --color .",
+    "lint": "./node_modules/.bin/eslint --color .",
     "local-test": "mocha --color --recursive --ui bdd",
-    "test": "mocha --color --recursive --ui bdd -R xunit --reporter-option output=test-results/junit/results.xml",
+    "test": "./node_modules/.bin/mocha --color --recursive --ui bdd -R xunit --reporter-option output=test-results/junit/results.xml",
     "start": "node index.js"
   },
-  "keywords": [ 
+  "keywords": [
     "prime numbers",
     "showcase"
   ],
